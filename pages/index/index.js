@@ -20,6 +20,7 @@ Page({
   },
   onLoad: function () {
     app.editTabbar();
+    console.log(this.data.tabbar.list[0].selected);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

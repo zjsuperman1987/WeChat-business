@@ -4,4 +4,4 @@
 
 
   <!-- 添加tabbar -->
-  <tabbar>{{tabbar}}</tabbar>
+  <tabbar tabbar="{{tabbar}}"></tabbar>

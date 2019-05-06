@@ -1,6 +1,6 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -39,14 +39,14 @@ App({
       }
     })
   },
-  onShow: function () {
+  onShow: function() {
     // 隱藏系統tabbar
     wx.hideTabBar();
   },
-  getSystemInfo: function () {
+  getSystemInfo: function() {
     let t = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         t.globalData.systemInfo = res;
       }
     })
@@ -57,38 +57,42 @@ App({
     let _this = currentPages[currentPages.length - 1];
     let pagePath = _this.route;
     (pagePath.indexOf('/') != 0) && (pagePath = '/' + pagePath);
-  
     for (let i in tabbar.list) {
       tabbar.list[i].selected = false;
-      (tabbar.list[i].pagePath == pagePath) && (tabbar.list[i].selected = true)
-      _this.setData({
-        tabbar: tabbar
-      })
+      (tabbar.list[i].pagePath == pagePath) && (tabbar.list[i].selected = true);
     }
+    _this.setData({
+      tabbar: tabbar
+    });
   },
+
+
+
+
   globalData: {
-    systemInfo: null,//客户端设备信息
+    systemInfo: null, //客户端设备信息
     userInfo: null,
     tabBar: {
       'backgroundColor': '#fff',
-      'color': '#979795',
-      'selectedColor': '#1c1c1b',
+      'color': '#929292',
+      'selectedColor': '#f85657',
       'list': [{
-        'pagePath': 'pages/index/index',
-        'iconPath': 'images/ico9.png',
-        'selectedIconPath': 'images/ico10.png',
+        'pagePath': '/pages/index/index',
+        'iconPath': 'icon/ico9.png',
+        'selectedIconPath': 'icon/ico10.png',
         'text': '首页'
       }, {
-        'pagePath': 'pages/code/code',
-        'iconPath': 'images/ico11.png',
-        'selectedIconPath': 'images/ico11.png',
+        'pagePath': '/pages/code/code',
+        'iconPath': 'icon/ico11.png',
+        'selectedIconPath': 'icon/ico11.png',
+        'isSpecial': true,
         'text': '会员码'
       }, {
-        'pagePath': 'pages/member/member',
-        'iconPath': 'images/ico12.png',
-        'selectedIconPath': 'images/ico13.png',
+        'pagePath': '/pages/member/member',
+        'iconPath': 'icon/ico12.png',
+        'selectedIconPath': 'icon/ico13.png',
         'text': '我的'
-      },]
+      }]
     }
   }
 })

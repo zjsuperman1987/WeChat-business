@@ -1,4 +1,4 @@
 <!--pages/code/code.wxml-->
 
   <!-- 添加tabbar -->
-  <tabbar>{{tabbar}}</tabbar>
+  <text>pages/middle/middle.wxml</text>

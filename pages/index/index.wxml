@@ -11,10 +11,8 @@
     <text class="user-motto">{{motto}}</text>
   </view>
 
-
-
   <!-- 添加tabbar -->
-  <tabbar>{{tabbar}}</tabbar>
+  <tabbar tabbar="{{tabbar}}"></tabbar>
 </view>
 
 

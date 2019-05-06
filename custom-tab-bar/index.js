@@ -9,22 +9,22 @@ Component({
       type: Object,
       value: {
         backgroundColor: '#fff',
-        color: '#979795',
-        selectedColor: '#1c1c1b',
+        color: '#929292',
+        selectedColor: '#f85657',
         list: [{
-          pagePath: 'pages/index/index',
-          iconPath: '../images/ico9.png',
-          selectedIconPath: '../images/ico10.png',
+          pagePath: '/pages/index/index',
+          iconPath: 'icon/ico9.png',
+          selectedIconPath: 'icon/ico10.png',
           text: '首页'
         }, {
-          pagePath: 'pages/code/code',
-          iconPath: '../images/ico11.png',
+          pagePath: '/pages/code/code',
+          iconPath: 'icon/ico11.png',
           isSpecial: true,
           text: '会员码'
         }, {
-          pagePath: 'pages/member/member',
-          iconPath: '../images/ico12.png',
-          selectedIconPath: '../images/ico13.png',
+          pagePath: '/pages/member/member',
+          iconPath: 'icon/ico12.png',
+          selectedIconPath: 'icon/ico13.png',
           text: '我的'
         }]
       }
@@ -35,7 +35,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    isIphoneX: app.globalData.systemInfo.model.includes('iphone X')
+    isIphoneX: app.globalData.systemInfo.model.includes('iPhone X')
   },
 
   /**
