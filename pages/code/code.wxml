@@ -1,0 +1,4 @@
+<!--pages/code/code.wxml-->
+
+  <!-- 添加tabbar -->
+  <tabbar>{{tabbar}}</tabbar>

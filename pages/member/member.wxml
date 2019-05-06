@@ -1,0 +1,7 @@
+<!--pages/member/member.wxml-->
+<text>pages/member/member.wxml</text>
+
+
+
+  <!-- 添加tabbar -->
+  <tabbar>{{tabbar}}</tabbar>
