@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "tabbar": "../../custom-tab-bar/index"
+    "tabbar": "../../custom-tab-bar/index",
+    "x-scroll-view": "../../custom-scroll-view/x-scroll-view"
   }
 }

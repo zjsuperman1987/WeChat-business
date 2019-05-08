@@ -7,7 +7,7 @@ App({
     wx.setStorageSync('logs', logs)
 
     //隐藏系统tabbar
-    wx.hideTabBar();
+    this.hidetabbar();
     //获取设备信息
     this.getSystemInfo();
 
@@ -41,7 +41,17 @@ App({
   },
   onShow: function() {
     // 隱藏系統tabbar
-    wx.hideTabBar();
+    this.hidetabbar();
+  },
+
+  hidetabbar: function () {
+    wx.hideTabBar({
+      fail: function () {
+        setTimeout(function() {
+          wx.hideTabBar();
+        }, 500)
+      }
+    })
   },
   getSystemInfo: function() {
     let t = this;
@@ -64,11 +74,7 @@ App({
     _this.setData({
       tabbar: tabbar
     });
-  },
-
-
-
-
+  }, 
   globalData: {
     systemInfo: null, //客户端设备信息
     userInfo: null,
