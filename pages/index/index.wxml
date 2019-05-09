@@ -13,32 +13,50 @@
 </view> -->
 
 
-  <!-- 滚动组件 -->
+<!-- 滚动组件 -->
 <x-scroll-view refreshing="{{refreshing}}" nomore="{{nomore}}" bindpulldownrefresh="_onPullDownRefresh" bindloadmore="_onLoadmore" bindscroll="_onScroll">
-<!-- 
-  <block wx:for="{{colors}}" wx:for-index="index" wx:key="index">
+  <!--   
+ <block wx:for="{{colors}}" wx:for-index="index" wx:key="index">
     <view class="view" style="background: {{item}}">{{index + 1}}. {{item}}</view>
-  </block> -->
-
-   <view class='home-top'>
-    <view class='mui-top'>
-      <view class='search-bar'></view>
-      <view class='scan'>
-        <icon></icon>
-        <text>扫一扫</text>
+  </block>  
+  -->
+  <block wx:for="{{pageComponent}}" wx:for-index="index" wx:key="index">
+    <view wx:if="{{item.name === 'header'}}" class='home-top'>
+      <view class='mui-top'>
+        <view class='search-bar'>
+          <text>折扣</text>
+          <icon></icon>
+        </view>
+        <view class='scan'>
+          <icon></icon>
+          <text>扫一扫</text>
+        </view>
+        <view class='sign'>
+          <icon>
+            <icon></icon>
+          </icon>
+          <text>签到</text>
+        </view>
       </view>
-      <view class='sign'>
-        <icon>1</icon>
-        <text>签到</text>
-      </view>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}"
+      indicator-color="{{indicator_color}}"
+      indicator-active-color="{{indicator_active_color}}">
+        <block wx:for="{{imgUrls}}">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" width="355" height="150" />
+          </swiper-item>
+        </block>
+      </swiper>
     </view>
-   </view>
- 
-  
+
+  </block>
+
+
+
 </x-scroll-view>
 
 
 
 
-  <!-- 添加tabbar -->
-  <tabbar tabbar="{{tabbar}}"></tabbar>
+<!-- 添加tabbar -->
+<tabbar tabbar="{{tabbar}}"></tabbar>

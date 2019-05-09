@@ -4,35 +4,58 @@ const app = getApp()
 
 Page({
   data: {
-    // motto: 'Hello World',
-    // userInfo: {},
-    // hasUserInfo: false,
-    // canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    // 页面结构
+    pageComponent: [{
+      name: 'header'
+    }, {
+      name: 'navList'
+    }, {
+      name: 'customerActiveTitle'
+    }, {
+      name: 'customerActiveList'
+    }],
 
     // tabbar
     tabbar: {},
 
     // 自定义滚动
-    colors: [],
+    // colors: [],
+
+    // swiper
+    imgUrls: [
+      'http://a2.qpic.cn/psb?/V12oEYDD0Tk57U/6jyPOaocChuK9pKJ5FfT0WL0KD3QGsHd73fbL4GS2Yo!/m/dDUBAAAAAAAAnull&bo=nwI8AQAAAAADB4I!&rf=photolist&t=5',
+      'http://a2.qpic.cn/psb?/V12oEYDD0Tk57U/6jyPOaocChuK9pKJ5FfT0WL0KD3QGsHd73fbL4GS2Yo!/m/dDUBAAAAAAAAnull&bo=nwI8AQAAAAADB4I!&rf=photolist&t=5',
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 3000,
+    duration: 500,
+    circular: true,
+    indicator_color: '#fff',
+    indicator_active_color: '#f85859'	
   },
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function() {
     // 底部
     app.editTabbar();
+
     // 滚动
     const colors = this._generateColors(20);
-    this.setData({ colors });
+    this.setData({
+      colors
+    });
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -64,16 +87,16 @@ Page({
   },
 
 
-  _randomColor: function () {
+  _randomColor: function() {
     return `rgba(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${(Math.random() * 0.3 + 0.2).toFixed(1)})`;
   },
 
-  _generateColors: function (length) {
+  _generateColors: function(length) {
     return new Array(length).fill(null).map(() => this._randomColor());
   },
 
   //下拉刷新监听函数
-  _onPullDownRefresh: function () {
+  _onPullDownRefresh: function() {
     setTimeout(() => {
       const colors = this._generateColors(20);
       this.setData({
@@ -84,22 +107,47 @@ Page({
   },
 
   //加载更多监听函数
-  _onLoadmore: function () {
+  _onLoadmore: function() {
     setTimeout(() => {
       if (this.data.colors.length == 80) {
-        this.setData({ nomore: true })
+        this.setData({
+          nomore: true
+        })
       } else {
         const colors = this._generateColors(20);
-        this.setData({ colors: [...this.data.colors, ...colors] });
+        this.setData({
+          colors: [...this.data.colors, ...colors]
+        });
       }
     }, 1000);
   },
 
-  _onScroll: function (e) {
+  _onScroll: function(e) {
     console.log(e);
+
+  },
+
+
+  // swiper
+  changeIndicatorDots(e) {
+    this.setData({
+      indicatorDots: !this.data.indicatorDots
+    })
+  },
+  changeAutoplay(e) {
+    this.setData({
+      autoplay: !this.data.autoplay
+    })
+  },
+  intervalChange(e) {
+    this.setData({
+      interval: e.detail.value
+    })
+  },
+  durationChange(e) {
+    this.setData({
+      duration: e.detail.value
+    })
   }
-
-
-
 
 })
